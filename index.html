@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EasyInvoice</title>
+</head>
+<body style="font-family:Arial;text-align:center;padding:40px;background:#f4f4f4;">
+
+<h1>🚀 EasyInvoice</h1>
+
+<p>Welcome to my first SaaS website.</p>
+
+<input type="text" id="customer" placeholder="Customer Name"><br><br>
+
+<input type="number" id="amount" placeholder="Amount"><br><br>
+
+<button onclick="generate()">Generate Invoice</button>
+
+<h2 id="result"></h2>
+
+<script>
+function generate(){
+let name=document.getElementById("customer").value;
+let amount=document.getElementById("amount").value;
+
+document.getElementById("result").innerHTML=
+"Invoice Created ✅<br><br>Customer: "+name+"<br>Amount: $"+amount;
+}
+</script>
+
+</body>
+</html>

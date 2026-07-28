@@ -1,29 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>EasyInvoice</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EasyInvoice</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#eef3ff;
+}
+
+.header{
+background:#2563eb;
+color:white;
+padding:20px;
+text-align:center;
+font-size:28px;
+font-weight:bold;
+}
+
+.container{
+max-width:400px;
+margin:30px auto;
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ddd;
+border-radius:8px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+#result{
+margin-top:20px;
+background:#f7f7f7;
+padding:15px;
+border-radius:10px;
+}
+</style>
+
 </head>
-<body style="font-family:Arial;text-align:center;padding:40px;background:#f4f4f4;">
+<body>
 
-<h1>🚀 EasyInvoice</h1>
+<div class="header">
+EasyInvoice
+</div>
 
-<p>Welcome to my first SaaS website.</p>
+<div class="container">
 
-<input type="text" id="customer" placeholder="Customer Name"><br><br>
+<h2>Create Invoice</h2>
 
-<input type="number" id="amount" placeholder="Amount"><br><br>
+<input id="customer" placeholder="Customer Name">
 
-<button onclick="generate()">Generate Invoice</button>
+<input id="product" placeholder="Product Name">
 
-<h2 id="result"></h2>
+<input id="price" type="number" placeholder="Price">
+
+<input id="qty" type="number" placeholder="Quantity">
+
+<button onclick="generateInvoice()">Generate Invoice</button>
+
+<div id="result"></div>
+
+</div>
 
 <script>
-function generate(){
-let name=document.getElementById("customer").value;
-let amount=document.getElementById("amount").value;
+function generateInvoice(){
 
-document.getElementById("result").innerHTML=
-"Invoice Created ✅<br><br>Customer: "+name+"<br>Amount: $"+amount;
+let c=document.getElementById("customer").value;
+let p=document.getElementById("product").value;
+let pr=Number(document.getElementById("price").value);
+let q=Number(document.getElementById("qty").value);
+
+let total=pr*q;
+
+document.getElementById("result").innerHTML=`
+<h3>Invoice</h3>
+<p><b>Customer:</b> ${c}</p>
+<p><b>Product:</b> ${p}</p>
+<p><b>Price:</b> $${pr}</p>
+<p><b>Quantity:</b> ${q}</p>
+<hr>
+<h2>Total: $${total}</h2>
+`;
+
 }
 </script>
 

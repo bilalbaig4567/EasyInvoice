@@ -104,11 +104,27 @@ document.getElementById("result").innerHTML=`
 <p><b>Price:</b> $${pr}</p>
 <p><b>Quantity:</b> ${q}</p>
 <hr>
+<h2>Tlet invoiceNo = Math.floor(Math.random() * 100000);
+
+document.getElementById("result").innerHTML = `
+<div style="background:white;padding:20px;border-radius:12px;border:2px solid #2563eb;">
+
+<h2 style="color:#2563eb;">EasyInvoice</h2>
+
+<p><b>Invoice #:</b> ${invoiceNo}</p>
+<p><b>Date:</b> ${new Date().toLocaleDateString()}</p>
+
+<hr>
+
+<p><b>Customer:</b> ${c}</p>
+<p><b>Product:</b> ${p}</p>
+<p><b>Price:</b> $${pr}</p>
+<p><b>Quantity:</b> ${q}</p>
+
+<hr>
+
 <h2>Total: $${total}</h2>
+
+</div>
 `;
-
-}
-</script>
-
-</body>
-</html>
+`;

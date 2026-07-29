@@ -306,7 +306,47 @@ Total: ${currency}${total}
 `;
 
 }
+function generatePersonalInvoice(){
 
+let name = document.getElementById("pname").value;
+let customer = document.getElementById("pcustomer").value;
+let product = document.getElementById("pproduct").value;
+let price = Number(document.getElementById("pprice").value);
+let qty = Number(document.getElementById("pqty").value);
+
+if(name=="" || customer=="" || product=="" || price<=0 || qty<=0){
+alert("Please fill all fields.");
+return;
+}
+
+let total = price * qty;
+let today = new Date().toLocaleDateString();
+
+document.getElementById("personalResult").innerHTML = `
+<div class="invoice">
+
+<h3>👤 Personal Invoice</h3>
+
+<p><b>Name:</b> ${name}</p>
+<p><b>Customer:</b> ${customer}</p>
+<p><b>Date:</b> ${today}</p>
+
+<hr>
+
+<p><b>Product:</b> ${product}</p>
+<p><b>Price:</b> ${price}</p>
+<p><b>Quantity:</b> ${qty}</p>
+
+<hr>
+
+<div class="total">
+Total: ${total}
+</div>
+
+</div>
+`;
+
+}
 </script>
 
 </body>

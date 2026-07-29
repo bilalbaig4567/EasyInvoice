@@ -397,7 +397,14 @@ Total: ${currency}${total}
 
 
 document.getElementById("result").innerHTML=invoice;
+if (logo) {
 
+const url = URL.createObjectURL(logo);
+
+document.getElementById("logoArea").innerHTML =
+`<img src="${url}" style="width:80px;height:80px;border-radius:10px;margin-bottom:10px;">`;
+
+}
 
 // Save History
 

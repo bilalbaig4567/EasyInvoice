@@ -103,6 +103,25 @@ margin-top:15px;
 
 <h2>Create Invoice</h2>
 <input id="company" placeholder="Company Name">
+  <label><b>Business Type</b></label>
+
+<select id="business" style="width:100%;padding:14px;margin:10px 0;border:1px solid #ccc;border-radius:8px;font-size:16px;">
+
+<option>Retail Store</option>
+<option>Cafe</option>
+<option>Restaurant</option>
+<option>Grocery Shop</option>
+<option>Clothing Store</option>
+<option>Electronics Shop</option>
+<option>Medical Store</option>
+<option>Pharmacy</option>
+<option>Salon</option>
+<option>Clinic</option>
+<option>Freelancer</option>
+<option>Wholesale</option>
+<option>Other</option>
+
+</select>
 <input id="customer" placeholder="Customer Name">
 
 <input id="product" placeholder="Product Name">
@@ -124,6 +143,7 @@ margin-top:15px;
 
 function generateInvoice(){
 let company=document.getElementById("company").value;
+let business=document.getElementById("business").value;  
 let customer=document.getElementById("customer").value;
 let product=document.getElementById("product").value;
 let price=Number(document.getElementById("price").value);
@@ -145,6 +165,7 @@ document.getElementById("result").innerHTML=`
 
 <h3>EasyInvoice Pro</h3>
 <p><b>Company:</b> ${company}</p>
+<p><b>Business:</b> ${business}</p>
 <p><b>Company:</b> Bilal Tech Solutions</p>
 <p><b<p><b>Phone:</b> +92 309 2359302</p>
 <hr>

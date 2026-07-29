@@ -204,22 +204,43 @@ style="background:#16a34a;margin-top:10px;">
 <div <div id="result"></div>
 
 </div> <!-- businessPage close -->
+<div id="personalPage" style="display:none;">
 
+<h2>👤 Personal Invoice</h2>
+
+<input id="pname" placeholder="Your Name">
+
+<input id="pcustomer" placeholder="Customer Name">
+
+<input id="pproduct" placeholder="Product Name">
+
+<input id="pprice" type="number" placeholder="Price">
+
+<input id="pqty" type="number" placeholder="Quantity">
+
+<button onclick="generatePersonalInvoice()">
+Generate Personal Invoice
+</button>
+
+<div id="personalResult"></div>
+
+</div>
 </div> <!-- container close -->
 
 <script>
 function showBusiness(){
+
 document.getElementById("homePage").style.display="none";
 document.getElementById("businessPage").style.display="block";
+document.getElementById("personalPage").style.display="none";
+
 }
 
 function showPersonal(){
 
 document.getElementById("homePage").style.display="none";
-
 document.getElementById("businessPage").style.display="none";
-
-alert("🚧 Personal Invoice page is coming in the next update.");
+document.getElementById("personalPage").style.display="block";
 
 }
 function generateInvoice(){

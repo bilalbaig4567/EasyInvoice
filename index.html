@@ -209,7 +209,10 @@ style="background:#16a34a;margin-top:10px;">
 <button onclick="showHistory()" style="background:#f59e0b;margin-top:15px;">
 📄 Invoice History
 </button>
-
+<button onclick="clearHistory()"
+style="background:#dc2626;margin-top:10px;">
+🗑️ Clear History
+</button>
 <div id="history" style="margin-top:20px;"></div>
 </div> <!-- businessPage close -->
 <div id="personalPage" style="display:none;">
@@ -277,6 +280,14 @@ document.getElementById("history").innerHTML = history;
 }
 
 }
+function clearHistory(){
+
+localStorage.removeItem("invoiceHistory");
+
+document.getElementById("history").innerHTML =
+"<p>History cleared.</p>";
+
+}
 function generateInvoice(){
 let company=document.getElementById("company").value;
 let business=document.getElementById("business").value;  
@@ -298,9 +309,13 @@ let today = now.toLocaleDateString();
 let time = now.toLocaleTimeString();
 
 document.getElementById("result").innerHTML=`
+let oldHistory = localStorage.getItem("invoiceHistory") || "";
+
+let newInvoice = document.getElementById("result").innerHTML;
+
 localStorage.setItem(
 "invoiceHistory",
-document.getElementById("result").innerHTML
+newInvoice + "<hr>" + oldHistory
 );
 <div class="invoice">
 

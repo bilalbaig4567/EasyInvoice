@@ -206,7 +206,11 @@ style="background:#16a34a;margin-top:10px;">
 </button>
 
 <div <div id="result"></div>
+<button onclick="showHistory()" style="background:#f59e0b;margin-top:15px;">
+📄 Invoice History
+</button>
 
+<div id="history" style="margin-top:20px;"></div>
 </div> <!-- businessPage close -->
 <div id="personalPage" style="display:none;">
 
@@ -257,6 +261,22 @@ document.getElementById("businessPage").style.display="none";
 document.getElementById("personalPage").style.display="none";
 
 }
+function showHistory(){
+
+let history = localStorage.getItem("invoiceHistory");
+
+if(history==null){
+
+document.getElementById("history").innerHTML =
+"<p>No invoices found.</p>";
+
+}else{
+
+document.getElementById("history").innerHTML = history;
+
+}
+
+}
 function generateInvoice(){
 let company=document.getElementById("company").value;
 let business=document.getElementById("business").value;  
@@ -278,6 +298,10 @@ let today = now.toLocaleDateString();
 let time = now.toLocaleTimeString();
 
 document.getElementById("result").innerHTML=`
+localStorage.setItem(
+"invoiceHistory",
+document.getElementById("result").innerHTML
+);
 <div class="invoice">
 
 <h3>EasyInvoice Pro</h3>

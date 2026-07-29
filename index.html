@@ -181,3 +181,137 @@ Generate Invoice
 
 
 </div>
+  
+<script>
+
+function showBusiness(){
+
+document.getElementById("homePage").style.display="none";
+document.getElementById("businessPage").style.display="block";
+
+}
+
+
+function showPersonal(){
+
+alert("Personal Invoice coming soon");
+
+}
+
+
+function goHome(){
+
+document.getElementById("homePage").style.display="block";
+document.getElementById("businessPage").style.display="none";
+
+}
+
+
+
+function generateInvoice(){
+
+let company=document.getElementById("company").value;
+let business=document.getElementById("business").value;
+let customer=document.getElementById("customer").value;
+let product=document.getElementById("product").value;
+let currency=document.getElementById("currency").value;
+
+let price=Number(document.getElementById("price").value);
+let qty=Number(document.getElementById("qty").value);
+
+
+if(company=="" || customer=="" || product=="" || price<=0 || qty<=0){
+
+alert("Please fill all fields");
+return;
+
+}
+
+
+let total=price*qty;
+
+let invoiceNo=Math.floor(Math.random()*900000)+100000;
+
+
+let invoice=`
+
+<div class="invoice">
+
+<h3>🚀 EasyInvoice Pro</h3>
+
+<p><b>Company:</b> ${company}</p>
+
+<p><b>Business:</b> ${business}</p>
+
+<hr>
+
+<p><b>Invoice No:</b> ${invoiceNo}</p>
+
+<p><b>Customer:</b> ${customer}</p>
+
+<p><b>Product:</b> ${product}</p>
+
+<p><b>Price:</b> ${currency}${price}</p>
+
+<p><b>Quantity:</b> ${qty}</p>
+
+<hr>
+
+<div class="total">
+Total: ${currency}${total}
+</div>
+
+</div>
+
+`;
+
+
+document.getElementById("result").innerHTML=invoice;
+
+
+// Save History
+
+let oldHistory=localStorage.getItem("invoiceHistory") || "";
+
+localStorage.setItem(
+"invoiceHistory",
+invoice + "<hr>" + oldHistory
+);
+
+
+}
+
+
+
+function showHistory(){
+
+let history=localStorage.getItem("invoiceHistory");
+
+
+if(history==null){
+
+document.getElementById("history").innerHTML=
+"No invoices found.";
+
+}else{
+
+document.getElementById("history").innerHTML=history;
+
+}
+
+
+}
+
+
+
+function clearHistory(){
+
+localStorage.removeItem("invoiceHistory");
+
+document.getElementById("history").innerHTML=
+"History cleared.";
+
+}
+
+
+</script>

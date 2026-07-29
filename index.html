@@ -319,6 +319,13 @@ newInvoice + "<hr>" + oldHistory
 );
 <div class="invoice">
 
+function showHistory() {
+  let history = localStorage.getItem("invoiceHistory") || "No history found";
+
+  document.getElementById("history").innerHTML = history;
+}
+
+showHistory();
 <h3>EasyInvoice Pro</h3>
 <p><b>Company:</b> ${company}</p>
 <p><b>Business:</b> ${business}</p>

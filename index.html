@@ -77,7 +77,39 @@ background:#f8fbff;
 .invoice h3{
 color:#2563eb;
 }
+.total{
+font-size:24px;
+font-weight:bold;
+color:green;
+margin-top:15px;
+}
 
+
+@media print {
+
+body{
+background:white;
+}
+
+.header,
+button,
+#history{
+display:none;
+}
+
+.container{
+box-shadow:none;
+margin:0;
+max-width:100%;
+}
+
+.invoice{
+border:2px solid black;
+}
+
+}
+
+</style>
 .total{
 font-size:24px;
 font-weight:bold;
@@ -200,7 +232,7 @@ Generate Invoice
 </button>
 
 
-<button style="background:#16a34a;">
+<button onclick="window.print()" style="background:#16a34a;">
 🖨️ Print Invoice
 </button>
 

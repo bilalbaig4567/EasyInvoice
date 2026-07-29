@@ -41,7 +41,7 @@ h2{
 margin-bottom:20px;
 }
 
-input{
+input,select{
 width:100%;
 padding:14px;
 margin:10px 0;
@@ -62,15 +62,8 @@ border-radius:8px;
 cursor:pointer;
 }
 
-button:hover{
-background:#1d4ed8;
-}
-
-#result{
-margin-top:25px;
-}
-
 .invoice{
+margin-top:25px;
 border:2px solid #2563eb;
 padding:20px;
 border-radius:10px;
@@ -79,7 +72,6 @@ background:#f8fbff;
 
 .invoice h3{
 color:#2563eb;
-margin-bottom:15px;
 }
 
 .total{
@@ -99,7 +91,10 @@ margin-top:15px;
 🚀 EasyInvoice Pro
 </div>
 
+
 <div class="container">
+
+
 <div id="homePage">
 
 <h2>Choose Invoice Type</h2>
@@ -108,306 +103,81 @@ margin-top:15px;
 🏢 Business Invoice
 </button>
 
-<button onclick="showPersonal()"
-style="background:#16a34a;margin-top:10px;">
+<button onclick="showPersonal()" style="background:#16a34a;">
 👤 Personal Invoice
 </button>
-👤 Personal Invoice
-</button>
-  
-
-<hr style="margin:20px 0;">
 
 </div>
 
+
+
 <div id="businessPage" style="display:none;">
-<h2>Create Invoice</h2>
-<button onclick="goHome()" style="background:#6b7280;margin-bottom:15px;">
+
+<h2>Create Business Invoice</h2>
+
+<button onclick="goHome()" style="background:#6b7280;">
 🏠 Home
 </button>
+
+
 <input id="company" placeholder="Company Name">
-  <label><b>Business Type</b></label>
 
-<select id="business" style="width:100%;padding:14px;margin:10px 0;border:1px solid #ccc;border-radius:8px;font-size:16px;">
 
-<option>Retail Store</option>
-<option>Cafe</option>
-<option>Restaurant</option>
+<select id="business">
+
 <option>Grocery Shop</option>
+<option>Restaurant</option>
+<option>Cafe</option>
 <option>Clothing Store</option>
 <option>Electronics Shop</option>
-<option>Medical Store</option>
-<option>Pharmacy</option>
-<option>Salon</option>
-<option>Clinic</option>
 <option>Freelancer</option>
-<option>Wholesale</option>
-<option>Other</option>
 
 </select>
+
+
 <input id="customer" placeholder="Customer Name">
 
 <input id="product" placeholder="Product Name">
-  <label><b>Country</b></label>
 
-<select id="country" style="width:100%;padding:14px;margin:10px 0;border:1px solid #ccc;border-radius:8px;font-size:16px;">
-  <option value="Pakistan">🇵🇰 Pakistan</option>
-  <option value="United States">🇺🇸 United States</option>
-  <option value="United Kingdom">🇬🇧 United Kingdom</option>
-  <option value="India">🇮🇳 India</option>
-  <option value="Bangladesh">🇧🇩 Bangladesh</option>
-  <option value="Nepal">🇳🇵 Nepal</option>
-  <option value="China">🇨🇳 China</option>
-  <option value="Japan">🇯🇵 Japan</option>
-  <option value="South Korea">🇰🇷 South Korea</option>
-  <option value="UAE">🇦🇪 UAE</option>
-  <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
-  <option value="Malaysia">🇲🇾 Malaysia</option>
-  <option value="Singapore">🇸🇬 Singapore</option>
-  <option value="Thailand">🇹🇭 Thailand</option>
-  <option value="Vietnam">🇻🇳 Vietnam</option>
-  <option value="Turkey">🇹🇷 Turkey</option>
-  <option value="Canada">🇨🇦 Canada</option>
-  <option value="Australia">🇦🇺 Australia</option>
-</select>
-  <label><b>Currency</b></label>
 
-<select id="currency" style="width:100%;padding:14px;margin:10px 0;border:1px solid #ccc;border-radius:8px;font-size:16px;">
+<select id="currency">
 
-<option value="$">🇺🇸 USD ($)</option>
-<option value="₨">🇵🇰 PKR (₨)</option>
-<option value="€">🇪🇺 EUR (€)</option>
-<option value="£">🇬🇧 GBP (£)</option>
-<option value="₹">🇮🇳 INR (₹)</option>
-<option value="৳">🇧🇩 BDT (৳)</option>
-<option value="₨">🇳🇵 NPR (₨)</option>
-<option value="¥">🇨🇳 CNY (¥)</option>
-<option value="¥">🇯🇵 JPY (¥)</option>
-<option value="₩">🇰🇷 KRW (₩)</option>
-<option value="د.إ">🇦🇪 AED (د.إ)</option>
-<option value="﷼">🇸🇦 SAR (﷼)</option>
-<option value="RM">🇲🇾 MYR (RM)</option>
-<option value="S$">🇸🇬 SGD (S$)</option>
-<option value="฿">🇹🇭 THB (฿)</option>
-<option value="₫">🇻🇳 VND (₫)</option>
-<option value="₺">🇹🇷 TRY (₺)</option>
-<option value="C$">🇨🇦 CAD (C$)</option>
-<option value="A$">🇦🇺 AUD (A$)</option>
+<option value="$">$ USD</option>
+<option value="Rs">Rs PKR</option>
+<option value="€">€ Euro</option>
 
 </select>
+
 
 <input id="price" type="number" placeholder="Price">
 
 <input id="qty" type="number" placeholder="Quantity">
 
-  <button onclick="generateInvoice()">Generate Invoice</button>
-  <button onclick="window.print()" style="background:#16a34a;color:white;padding:15px;width:100%;margin-top:10px;border:none;border-radius:10px;font-size:18px;color:white;">
+
+<button onclick="generateInvoice()">
+Generate Invoice
+</button>
+
+
+<button onclick="window.print()" style="background:#16a34a;">
 🖨️ Print Invoice
 </button>
 
-<div <div id="result"></div>
-<button onclick="showHistory()" style="background:#f59e0b;margin-top:15px;">
+
+<div id="result"></div>
+
+
+<button onclick="showHistory()" style="background:#f59e0b;">
 📄 Invoice History
 </button>
-<button onclick="clearHistory()"
-style="background:#dc2626;margin-top:10px;">
+
+
+<button onclick="clearHistory()" style="background:#dc2626;">
 🗑️ Clear History
 </button>
-<div id="history" style="margin-top:20px;"></div>
-</div> <!-- businessPage close -->
-<div id="personalPage" style="display:none;">
 
-<h2>👤 Personal Invoice</h2>
-  <button onclick="goHome()" style="background:#6b7280;margin-bottom:15px;">
-🏠 Home
-</button>
 
-<input id="pname" placeholder="Your Name">
+<div id="history"></div>
 
-<input id="pcustomer" placeholder="Customer Name">
-
-<input id="pproduct" placeholder="Product Name">
-
-<input id="pprice" type="number" placeholder="Price">
-
-<input id="pqty" type="number" placeholder="Quantity">
-
-<button onclick="generatePersonalInvoice()">
-Generate Personal Invoice
-</button>
-
-<div id="personalResult"></div>
 
 </div>
-</div> <!-- container close -->
-
-<script>
-function showBusiness(){
-
-document.getElementById("homePage").style.display="none";
-document.getElementById("businessPage").style.display="block";
-document.getElementById("personalPage").style.display="none";
-
-}
-
-function showPersonal(){
-
-document.getElementById("homePage").style.display="none";
-document.getElementById("businessPage").style.display="none";
-document.getElementById("personalPage").style.display="block";
-
-}
-function goHome(){
-
-document.getElementById("homePage").style.display="block";
-document.getElementById("businessPage").style.display="none";
-document.getElementById("personalPage").style.display="none";
-
-}
-function showHistory(){
-
-let history = localStorage.getItem("invoiceHistory");
-
-if(history==null){
-
-document.getElementById("history").innerHTML =
-"<p>No invoices found.</p>";
-
-}else{
-
-document.getElementById("history").innerHTML = history;
-
-}
-
-}
-function clearHistory(){
-
-localStorage.removeItem("invoiceHistory");
-
-document.getElementById("history").innerHTML =
-"<p>History cleared.</p>";
-
-}
-function generateInvoice(){
-let company=document.getElementById("company").value;
-let business=document.getElementById("business").value;  
-let customer=document.getElementById("customer").value;
-let product=document.getElementById("product").value;
-let price=Number(document.getElementById("price").value);
-let currency=document.getElementById("currency").value;
-let qty=Number(document.getElementById("qty").value);
-
-if(customer=="" || product=="" || price<=0 || qty<=0){
-alert("Please fill all fields.");
-return;
-}
-
-let total=price*qty;
-let invoiceNo=Math.floor(Math.random()*900000)+100000;
-let now = new Date();
-let today = now.toLocaleDateString();
-let time = now.toLocaleTimeString();
-
-document.getElementById("result").innerHTML=`
-let oldHistory = localStorage.getItem("invoiceHistory") || "";
-
-let newInvoice = document.getElementById("result").innerHTML;
-
-localStorage.setItem(
-"invoiceHistory",
-newInvoice + "<hr>" + oldHistory
-);
-<div class="invoice">
-
-function showHistory() {
-  let history = localStorage.getItem("invoiceHistory") || "No history found";
-
-  document.getElementById("history").innerHTML = history;
-}
-
-showHistory();
-<h3>EasyInvoice Pro</h3>
-<p><b>Company:</b> ${company}</p>
-<p><b>Business:</b> ${business}</p>
-<p><b>Company:</b> Bilal Tech Solutions</p>
-<p><b>Phone:</b> +92 309 2359302</p>
-<hr>
-<div style="color:green;
-font-size:24px;
-font-weight:bold;
-border:3px solid green;
-display:inline-block;
-padding:5px 15px;
-transform:rotate(-10deg);
-margin:10px 0;">
-✔ PAID
-</div>
-<p><b>Invoice No:</b> ${invoiceNo}</p>
-
-<p><b>Date:</b> ${today}</p>
-<p><b>Time:</b> ${time}</p>
-<hr>
-
-<p><b>Customer:</b> ${customer}</p>
-
-<p><b>Product:</b> ${product}</p>
-
-<p><b>Price:</b> ${currency}${price}</p>
-
-<p><b>Quantity:</b> ${qty}</p>
-
-<hr>
-
-<div class="total">
-Total: ${currency}${total}
-</div>
-
-</div>
-`;
-
-}
-function generatePersonalInvoice(){
-
-let name = document.getElementById("pname").value;
-let customer = document.getElementById("pcustomer").value;
-let product = document.getElementById("pproduct").value;
-let price = Number(document.getElementById("pprice").value);
-let qty = Number(document.getElementById("pqty").value);
-
-if(name=="" || customer=="" || product=="" || price<=0 || qty<=0){
-alert("Please fill all fields.");
-return;
-}
-
-let total = price * qty;
-let today = new Date().toLocaleDateString();
-
-document.getElementById("personalResult").innerHTML = `
-<div class="invoice">
-
-<h3>👤 Personal Invoice</h3>
-
-<p><b>Name:</b> ${name}</p>
-<p><b>Customer:</b> ${customer}</p>
-<p><b>Date:</b> ${today}</p>
-
-<hr>
-
-<p><b>Product:</b> ${product}</p>
-<p><b>Price:</b> ${price}</p>
-<p><b>Quantity:</b> ${qty}</p>
-
-<hr>
-
-<div class="total">
-Total: ${total}
-</div>
-
-</div>
-`;
-
-}
-</script>
-
-</body>
-</html>  

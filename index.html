@@ -136,7 +136,9 @@ return;
 
 let total=price*qty;
 let invoiceNo=Math.floor(Math.random()*900000)+100000;
-let today=new Date().toLocaleDateString();
+let now = new Date();
+let today = now.toLocaleDateString();
+let time = now.toLocaleTimeString();
 
 document.getElementById("result").innerHTML=`
 <div class="invoice">
@@ -146,7 +148,7 @@ document.getElementById("result").innerHTML=`
 <p><b>Invoice No:</b> ${invoiceNo}</p>
 
 <p><b>Date:</b> ${today}</p>
-
+<p><b>Time:</b> ${time}</p>
 <hr>
 
 <p><b>Customer:</b> ${customer}</p>

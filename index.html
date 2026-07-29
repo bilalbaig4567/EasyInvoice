@@ -114,6 +114,9 @@ style="background:#16a34a;margin-top:10px;">
 </button>
 👤 Personal Invoice
 </button>
+  <button onclick="goHome()" style="background:#6b7280;margin-bottom:15px;">
+🏠 Home
+</button>
 
 <hr style="margin:20px 0;">
 
@@ -121,6 +124,9 @@ style="background:#16a34a;margin-top:10px;">
 
 <div id="businessPage" style="display:none;">
 <h2>Create Invoice</h2>
+<button onclick="goHome()" style="background:#6b7280;margin-bottom:15px;">
+🏠 Home
+</button>
 <input id="company" placeholder="Company Name">
   <label><b>Business Type</b></label>
 
@@ -241,6 +247,13 @@ function showPersonal(){
 document.getElementById("homePage").style.display="none";
 document.getElementById("businessPage").style.display="none";
 document.getElementById("personalPage").style.display="block";
+
+}
+function goHome(){
+
+document.getElementById("homePage").style.display="block";
+document.getElementById("businessPage").style.display="none";
+document.getElementById("personalPage").style.display="none";
 
 }
 function generateInvoice(){

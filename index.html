@@ -100,7 +100,21 @@ margin-top:15px;
 </div>
 
 <div class="container">
+<div id="homePage">
 
+<h2>Choose Invoice Type</h2>
+
+<button onclick="showBusiness()">🏢 Business Invoice</button>
+
+<button onclick="showPersonal()" style="background:#16a34a;margin-top:10px;">
+👤 Personal Invoice
+</button>
+
+<hr style="margin:20px 0;">
+
+</div>
+
+<div id="businessPage" style="display:none;">
 <h2>Create Invoice</h2>
 <input id="company" placeholder="Company Name">
   <label><b>Business Type</b></label>
@@ -182,12 +196,23 @@ margin-top:15px;
 🖨️ Print Invoice
 </button>
 
-<div id="result"></div>
+<div <div id="result"></div>
 
-</div>
+</div> <!-- businessPage close -->
+
+</div> <!-- container close -->
 
 <script>
+function showBusiness(){
+document.getElementById("homePage").style.display="none";
+document.getElementById("businessPage").style.display="block";
+}
 
+function showPersonal(){
+alert("Personal Invoice page will be added in Version 4 Part 2");
+document.getElementById("homePage").style.display="none";
+document.getElementById("businessPage").style.display="block";
+}
 function generateInvoice(){
 let company=document.getElementById("company").value;
 let business=document.getElementById("business").value;  

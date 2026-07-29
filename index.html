@@ -264,6 +264,195 @@ Generate Personal Invoice
 
 </div>
 
+<script>
 
+function showBusiness(){
+
+document.getElementById("homePage").style.display="none";
+document.getElementById("businessPage").style.display="block";
+document.getElementById("personalPage").style.display="none";
+
+}
+
+
+function showPersonal(){
+
+document.getElementById("homePage").style.display="none";
+document.getElementById("businessPage").style.display="none";
+document.getElementById("personalPage").style.display="block";
+
+}
+
+
+function goHome(){
+
+document.getElementById("homePage").style.display="block";
+document.getElementById("businessPage").style.display="none";
+document.getElementById("personalPage").style.display="none";
+
+}
+
+
+
+function generateInvoice(){
+
+let company=document.getElementById("company").value;
+let business=document.getElementById("business").value;
+let country=document.getElementById("country").value;
+let currency=document.getElementById("currency").value;
+
+let customer=document.getElementById("customer").value;
+let product=document.getElementById("product").value;
+
+let price=Number(document.getElementById("price").value);
+let qty=Number(document.getElementById("qty").value);
+
+
+if(company=="" || customer=="" || product=="" || price<=0 || qty<=0){
+
+alert("Please fill all fields");
+return;
+
+}
+
+
+let total=price*qty;
+
+let invoiceNo=Math.floor(Math.random()*900000)+100000;
+
+let date=new Date().toLocaleDateString();
+
+
+let invoice=`
+
+<div class="invoice">
+
+<h3>🚀 EasyInvoice Pro</h3>
+
+<p><b>Company:</b> ${company}</p>
+
+<p><b>Business:</b> ${business}</p>
+
+<p><b>Country:</b> ${country}</p>
+
+<hr>
+
+<p><b>Invoice No:</b> ${invoiceNo}</p>
+
+<p><b>Date:</b> ${date}</p>
+
+<hr>
+
+<p><b>Customer:</b> ${customer}</p>
+
+<p><b>Product:</b> ${product}</p>
+
+<p><b>Price:</b> ${currency}${price}</p>
+
+<p><b>Quantity:</b> ${qty}</p>
+
+<hr>
+
+<div class="total">
+Total: ${currency}${total}
+</div>
+
+</div>
+
+`;
+
+
+document.getElementById("result").innerHTML=invoice;
+
+
+// Save History
+
+let oldHistory=localStorage.getItem("invoiceHistory") || "";
+
+localStorage.setItem(
+"invoiceHistory",
+invoice + "<hr>" + oldHistory
+);
+
+
+}
+
+
+
+function showHistory(){
+
+let history=localStorage.getItem("invoiceHistory");
+
+
+if(history==null){
+
+document.getElementById("history").innerHTML=
+"<p>No invoices found.</p>";
+
+}else{
+
+document.getElementById("history").innerHTML=history;
+
+}
+
+}
+
+
+
+function clearHistory(){
+
+localStorage.removeItem("invoiceHistory");
+
+document.getElementById("history").innerHTML=
+"<p>History cleared.</p>";
+
+}
+
+
+
+function generatePersonalInvoice(){
+
+let name=document.getElementById("pname").value;
+let customer=document.getElementById("pcustomer").value;
+let product=document.getElementById("pproduct").value;
+
+let price=Number(document.getElementById("pprice").value);
+let qty=Number(document.getElementById("pqty").value);
+
+
+if(name=="" || customer=="" || product=="" || price<=0 || qty<=0){
+
+alert("Please fill all fields");
+return;
+
+}
+
+
+let total=price*qty;
+
+
+document.getElementById("personalResult").innerHTML=`
+
+<div class="invoice">
+
+<h3>👤 Personal Invoice</h3>
+
+<p><b>Name:</b> ${name}</p>
+
+<p><b>Customer:</b> ${customer}</p>
+
+<p><b>Product:</b> ${product}</p>
+
+<p><b>Total:</b> ${total}</p>
+
+
+</div>
+
+`;
+
+}
+
+
+</script>
 </body>
 </html>

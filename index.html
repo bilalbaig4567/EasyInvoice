@@ -62,6 +62,10 @@ border-radius:8px;
 cursor:pointer;
 }
 
+button:hover{
+opacity:.9;
+}
+
 .invoice{
 margin-top:25px;
 border:2px solid #2563eb;
@@ -87,6 +91,7 @@ margin-top:15px;
 
 <body>
 
+
 <div class="header">
 🚀 EasyInvoice Pro
 </div>
@@ -94,6 +99,8 @@ margin-top:15px;
 
 <div class="container">
 
+
+<!-- HOME PAGE -->
 
 <div id="homePage">
 
@@ -111,9 +118,12 @@ margin-top:15px;
 
 
 
+<!-- BUSINESS PAGE -->
+
 <div id="businessPage" style="display:none;">
 
 <h2>Create Business Invoice</h2>
+
 
 <button onclick="goHome()" style="background:#6b7280;">
 🏠 Home
@@ -123,14 +133,55 @@ margin-top:15px;
 <input id="company" placeholder="Company Name">
 
 
+<label><b>Business Type</b></label>
+
 <select id="business">
 
 <option>Grocery Shop</option>
-<option>Restaurant</option>
 <option>Cafe</option>
+<option>Restaurant</option>
 <option>Clothing Store</option>
 <option>Electronics Shop</option>
+<option>Medical Store</option>
+<option>Pharmacy</option>
+<option>Salon</option>
+<option>Clinic</option>
 <option>Freelancer</option>
+<option>Wholesale</option>
+
+</select>
+
+
+
+<label><b>Country</b></label>
+
+<select id="country">
+
+<option value="Pakistan">🇵🇰 Pakistan</option>
+<option value="USA">🇺🇸 USA</option>
+<option value="UK">🇬🇧 United Kingdom</option>
+<option value="UAE">🇦🇪 UAE</option>
+<option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
+<option value="Malaysia">🇲🇾 Malaysia</option>
+<option value="Canada">🇨🇦 Canada</option>
+<option value="Australia">🇦🇺 Australia</option>
+
+</select>
+
+
+
+<label><b>Currency</b></label>
+
+<select id="currency">
+
+<option value="Rs">🇵🇰 PKR (Rs)</option>
+<option value="$">🇺🇸 USD ($)</option>
+<option value="£">🇬🇧 GBP (£)</option>
+<option value="د.إ">🇦🇪 AED (د.إ)</option>
+<option value="﷼">🇸🇦 SAR (﷼)</option>
+<option value="RM">🇲🇾 MYR (RM)</option>
+<option value="C$">🇨🇦 CAD (C$)</option>
+<option value="A$">🇦🇺 AUD (A$)</option>
 
 </select>
 
@@ -138,16 +189,6 @@ margin-top:15px;
 <input id="customer" placeholder="Customer Name">
 
 <input id="product" placeholder="Product Name">
-
-
-<select id="currency">
-
-<option value="$">$ USD</option>
-<option value="Rs">Rs PKR</option>
-<option value="€">€ Euro</option>
-
-</select>
-
 
 <input id="price" type="number" placeholder="Price">
 
@@ -159,7 +200,7 @@ Generate Invoice
 </button>
 
 
-<button onclick="window.print()" style="background:#16a34a;">
+<button style="background:#16a34a;">
 🖨️ Print Invoice
 </button>
 
@@ -167,12 +208,12 @@ Generate Invoice
 <div id="result"></div>
 
 
-<button onclick="showHistory()" style="background:#f59e0b;">
+<button style="background:#f59e0b;">
 📄 Invoice History
 </button>
 
 
-<button onclick="clearHistory()" style="background:#dc2626;">
+<button style="background:#dc2626;">
 🗑️ Clear History
 </button>
 
@@ -181,137 +222,48 @@ Generate Invoice
 
 
 </div>
-  
-<script>
-
-function showBusiness(){
-
-document.getElementById("homePage").style.display="none";
-document.getElementById("businessPage").style.display="block";
-
-}
-
-
-function showPersonal(){
-
-alert("Personal Invoice coming soon");
-
-}
-
-
-function goHome(){
-
-document.getElementById("homePage").style.display="block";
-document.getElementById("businessPage").style.display="none";
-
-}
 
 
 
-function generateInvoice(){
 
-let company=document.getElementById("company").value;
-let business=document.getElementById("business").value;
-let customer=document.getElementById("customer").value;
-let product=document.getElementById("product").value;
-let currency=document.getElementById("currency").value;
-
-let price=Number(document.getElementById("price").value);
-let qty=Number(document.getElementById("qty").value);
+<!-- PERSONAL PAGE -->
 
 
-if(company=="" || customer=="" || product=="" || price<=0 || qty<=0){
-
-alert("Please fill all fields");
-return;
-
-}
+<div id="personalPage" style="display:none;">
 
 
-let total=price*qty;
-
-let invoiceNo=Math.floor(Math.random()*900000)+100000;
+<h2>👤 Personal Invoice</h2>
 
 
-let invoice=`
+<button onclick="goHome()" style="background:#6b7280;">
+🏠 Home
+</button>
 
-<div class="invoice">
 
-<h3>🚀 EasyInvoice Pro</h3>
+<input id="pname" placeholder="Your Name">
 
-<p><b>Company:</b> ${company}</p>
+<input id="pcustomer" placeholder="Customer Name">
 
-<p><b>Business:</b> ${business}</p>
+<input id="pproduct" placeholder="Product Name">
 
-<hr>
+<input id="pprice" type="number" placeholder="Price">
 
-<p><b>Invoice No:</b> ${invoiceNo}</p>
+<input id="pqty" type="number" placeholder="Quantity">
 
-<p><b>Customer:</b> ${customer}</p>
 
-<p><b>Product:</b> ${product}</p>
+<button>
+Generate Personal Invoice
+</button>
 
-<p><b>Price:</b> ${currency}${price}</p>
 
-<p><b>Quantity:</b> ${qty}</p>
+<div id="personalResult"></div>
 
-<hr>
-
-<div class="total">
-Total: ${currency}${total}
-</div>
 
 </div>
 
-`;
+
+</div>
 
 
-document.getElementById("result").innerHTML=invoice;
-
-
-// Save History
-
-let oldHistory=localStorage.getItem("invoiceHistory") || "";
-
-localStorage.setItem(
-"invoiceHistory",
-invoice + "<hr>" + oldHistory
-);
-
-
-}
-
-
-
-function showHistory(){
-
-let history=localStorage.getItem("invoiceHistory");
-
-
-if(history==null){
-
-document.getElementById("history").innerHTML=
-"No invoices found.";
-
-}else{
-
-document.getElementById("history").innerHTML=history;
-
-}
-
-
-}
-
-
-
-function clearHistory(){
-
-localStorage.removeItem("invoiceHistory");
-
-document.getElementById("history").innerHTML=
-"History cleared.";
-
-}
-
-
-</script>
+</body>
+</html>

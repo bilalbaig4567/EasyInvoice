@@ -194,6 +194,7 @@ let business=document.getElementById("business").value;
 let customer=document.getElementById("customer").value;
 let product=document.getElementById("product").value;
 let price=Number(document.getElementById("price").value);
+let currency=document.getElementById("currency").value;
 let qty=Number(document.getElementById("qty").value);
 
 if(customer=="" || product=="" || price<=0 || qty<=0){
@@ -236,14 +237,14 @@ margin:10px 0;">
 
 <p><b>Product:</b> ${product}</p>
 
-<p><b>Price:</b> $${price}</p>
+<p><b>Price:</b> ${currency}${price}</p>
 
 <p><b>Quantity:</b> ${qty}</p>
 
 <hr>
 
 <div class="total">
-Total: $${total}
+Total: ${currency}${total}
 </div>
 
 </div>

@@ -335,7 +335,12 @@ Generate Personal Invoice
 <script>
 
 function showBusiness(){
-
+document.getElementById("company").value = localStorage.getItem("companyName") || "";
+document.getElementById("address").value = localStorage.getItem("companyAddress") || "";
+document.getElementById("phone").value = localStorage.getItem("companyPhone") || "";
+document.getElementById("email").value = localStorage.getItem("companyEmail") || "";
+document.getElementById("website").value = localStorage.getItem("companyWebsite") || "";
+document.getElementById("taxid").value = localStorage.getItem("companyTaxId") || "";
 document.getElementById("homePage").style.display="none";
 document.getElementById("businessPage").style.display="block";
 document.getElementById("personalPage").style.display="none";
@@ -458,6 +463,12 @@ ${notes ? `<p><b>Notes:</b> ${notes}</p>` : ""}
 
 
 document.getElementById("result").innerHTML=invoice;
+localStorage.setItem("companyName", company);
+localStorage.setItem("companyAddress", address);
+localStorage.setItem("companyPhone", phone);
+localStorage.setItem("companyEmail", email);
+localStorage.setItem("companyWebsite", website);
+localStorage.setItem("companyTaxId", taxid); 
 if (logo) {
 
 const url = URL.createObjectURL(logo);

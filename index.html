@@ -403,7 +403,11 @@ let total=price*qty;
 let taxAmount = (total * tax) / 100;
 let discountAmount = (total * discount) / 100; 
 let grandTotal = total + taxAmount - discountAmount;
-let invoiceNo=Math.floor(Math.random()*900000)+100000;
+let invoiceCounter = Number(localStorage.getItem("invoiceCounter")) || 1;
+
+let invoiceNo = "INV-2026-" + String(invoiceCounter).padStart(6,"0");
+
+localStorage.setItem("invoiceCounter", invoiceCounter + 1);
 
 let date=new Date().toLocaleDateString();
 

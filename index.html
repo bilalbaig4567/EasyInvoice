@@ -187,7 +187,8 @@ border:2px solid black;
 <input id="phone" placeholder="Company Phone Number">
 <input id="email" type="email" placeholder="Company Email">
 <input id="website" placeholder="Company Website"> 
-<input id="taxid" placeholder="NTN / Tax ID (Optional)"> 
+<input id="taxid" placeholder="NTN / Tax ID (Optional)">
+<textarea id="notes" placeholder="Customer Notes (Optional)" style="width:100%;padding:14px;margin:10px 0;font-size:16px;border:1px solid #ccc;border-radius:8px;height:90px;"></textarea> 
 <label><b>Company Logo (Optional)</b></label>
 
 <input
@@ -364,6 +365,7 @@ let phone=document.getElementById("phone").value;
 let email=document.getElementById("email").value; 
 let website=document.getElementById("website").vvaluelet;
 let taxid=document.getElementById("taxid").value;
+let notes=document.getElementById("notes").value;
 let logo = document.getElementById("logo").files[0];
 let business=document.getElementById("business").value;
 let country=document.getElementById("country").value;
@@ -436,7 +438,15 @@ let invoice=`
 <div class="total">
 Grand Total: ${currency}${grandTotal}
 </div>
+<hr>
 
+<p><b>Notes:</b> ${notes}</p>
+
+<br>
+
+<p style="text-align:center;color:#16a34a;font-weight:bold;">
+🙏 Thank you for your business!
+</p>
 </div>
 
 `;

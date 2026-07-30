@@ -251,7 +251,7 @@ accept="image/*">
 
 <input id="qty" type="number" placeholder="Quantity">
 <input id="tax" type="number" placeholder="Tax (%)" value="0">
-
+<input id="discount" type="number" placeholder="Discount (%)" value="0">
 <button onclick="generateInvoice()">
 Generate Invoice
 </button>
@@ -365,7 +365,7 @@ let product=document.getElementById("product").value;
 let price=Number(document.getElementById("price").value);
 let qty=Number(document.getElementById("qty").value);
 let tax=Number(document.getElementById("tax").value);
-
+let discount=Number(document.getElementById("discount").value);
 if(company=="" || customer=="" || product=="" || price<=0 || qty<=0){
 
 alert("Please fill all fields");
@@ -376,7 +376,8 @@ return;
 
 let total=price*qty;
 let taxAmount = (total * tax) / 100;
-let grandTotal = total + taxAmount;
+let discountAmount = (total * discount) / 100; 
+let grandTotal = total + taxAmount - discountAmount;
 let invoiceNo=Math.floor(Math.random()*900000)+100000;
 
 let date=new Date().toLocaleDateString();
@@ -415,7 +416,7 @@ let invoice=`
 <p><b>Subtotal:</b> ${currency}${total}</p>
 
 <p><b>Tax (${tax}%):</b> ${currency}${taxAmount}</p>
-
+<p><b>Discount (${discount}%):</b> -${currency}${discountAmount}</p>
 <hr>
 
 <div class="total">

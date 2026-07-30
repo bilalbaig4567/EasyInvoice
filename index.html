@@ -250,7 +250,7 @@ accept="image/*">
 <input id="price" type="number" placeholder="Price">
 
 <input id="qty" type="number" placeholder="Quantity">
-
+<input id="tax" type="number" placeholder="Tax (%)" value="0">
 
 <button onclick="generateInvoice()">
 Generate Invoice
@@ -364,7 +364,7 @@ let product=document.getElementById("product").value;
 
 let price=Number(document.getElementById("price").value);
 let qty=Number(document.getElementById("qty").value);
-
+let tax=Number(document.getElementById("tax").value);
 
 if(company=="" || customer=="" || product=="" || price<=0 || qty<=0){
 

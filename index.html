@@ -375,7 +375,8 @@ return;
 
 
 let total=price*qty;
-
+let taxAmount = (total * tax) / 100;
+let grandTotal = total + taxAmount;
 let invoiceNo=Math.floor(Math.random()*900000)+100000;
 
 let date=new Date().toLocaleDateString();
@@ -411,8 +412,14 @@ let invoice=`
 
 <hr>
 
+<p><b>Subtotal:</b> ${currency}${total}</p>
+
+<p><b>Tax (${tax}%):</b> ${currency}${taxAmount}</p>
+
+<hr>
+
 <div class="total">
-Total: ${currency}${total}
+Grand Total: ${currency}${grandTotal}
 </div>
 
 </div>

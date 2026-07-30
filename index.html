@@ -409,7 +409,18 @@ let invoiceNo = "INV-2026-" + String(invoiceCounter).padStart(6,"0");
 
 localStorage.setItem("invoiceCounter", invoiceCounter + 1);
 
-let date=new Date().toLocaleDateString();
+let now = new Date();
+
+let date = now.toLocaleDateString("en-GB", {
+day: "2-digit",
+month: "short",
+year: "numeric"
+});
+
+let time = now.toLocaleTimeString("en-US", {
+hour: "2-digit",
+minute: "2-digit"
+});
 
 
 let invoice=`
@@ -433,7 +444,7 @@ ${taxid ? `<p><b>NTN / Tax ID:</b> ${taxid}</p>` : ""}
 <p><b>Invoice No:</b> ${invoiceNo}</p>
 
 <p><b>Date:</b> ${date}</p>
-
+<p><b>Time:</b> ${time}</p>
 <hr>
 
 <p><b>Customer:</b> ${customer}</p>

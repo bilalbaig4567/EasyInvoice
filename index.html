@@ -407,9 +407,9 @@ let invoice=`
 <h3>🚀 EasyInvoice Pro</h3>
 <div id="logoArea"></div>
 <p><b>Company:</b> ${company}</p>
-<p><b>Address:</b> ${address}</p>
-<p><b>Phone:</b> ${phone}</p>
-<p><b>Email:</b> ${email}</p>
+${address ? `<p><b>Address:</b> ${address}</p>` : ""}
+${phone ? `<p><b>Phone:</b> ${phone}</p>` : ""}
+${email ? `<p><b>Email:</b> ${email}</p>` : ""}
 ${website ? `<p><b>Website:</b> ${website}</p>` : ""}
 ${taxid ? `<p><b>NTN / Tax ID:</b> ${taxid}</p>` : ""}
 <p><b>Business:</b> ${business}</p>

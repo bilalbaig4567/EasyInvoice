@@ -183,6 +183,7 @@ border:2px solid black;
 
 
 <input id="company" placeholder="Company Name">
+<input id="address" placeholder="Company Address">
 <label><b>Company Logo (Optional)</b></label>
 
 <input
@@ -354,6 +355,7 @@ document.getElementById("personalPage").style.display="none";
 function generateInvoice(){
 
 let company=document.getElementById("company").value;
+let address=document.getElementById("address").value;  
 let logo = document.getElementById("logo").files[0];
 let business=document.getElementById("business").value;
 let country=document.getElementById("country").value;
@@ -390,7 +392,7 @@ let invoice=`
 <h3>🚀 EasyInvoice Pro</h3>
 <div id="logoArea"></div>
 <p><b>Company:</b> ${company}</p>
-
+<p><b>Address:</b> ${address}</p>
 <p><b>Business:</b> ${business}</p>
 
 <p><b>Country:</b> ${country}</p>

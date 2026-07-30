@@ -285,7 +285,9 @@ Generate Invoice
 
 
 <div id="result"></div>
+<h3>🕒 Recent Customers</h3>
 
+<div id="recentCustomers"></div>
 
 <button id="historyBtn" onclick="showHistory()" style="background:#f59e0b;">
 📄 Invoice History
@@ -357,7 +359,7 @@ document.getElementById("businessPage").style.display="block";
 document.getElementById("personalPage").style.display="none";
 loadCustomers();
 }
-
+showRecentCustomers();
 
 function showPersonal(){
 
@@ -632,7 +634,21 @@ customers.forEach(function(c){
 list.innerHTML += `<option value="${c}">`;
 
 });
+function showRecentCustomers(){
 
+let customers = JSON.parse(localStorage.getItem("customers")) || [];
+
+let html = "";
+
+customers.slice().reverse().forEach(function(c){
+
+html += `<button onclick="document.getElementById('customer').value='${c}'" style="width:auto;margin:5px;padding:8px 12px;">${c}</button>`;
+
+});
+
+document.getElementById("recentCustomers").innerHTML = html;
+
+}
 }
 </script>
 </body>

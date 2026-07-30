@@ -254,7 +254,9 @@ accept="image/*">
 </select>
 
 
-<input id="customer" placeholder="Customer Name">
+<input id="customer" list="customerList" placeholder="Customer Name">
+
+<datalist id="customerList"></datalist>
 
 <input id="product" placeholder="Product Name">
 
@@ -353,7 +355,7 @@ document.getElementById("taxid").value = localStorage.getItem("companyTaxId") ||
 document.getElementById("homePage").style.display="none";
 document.getElementById("businessPage").style.display="block";
 document.getElementById("personalPage").style.display="none";
-
+loadCustomers();
 }
 
 
@@ -391,6 +393,12 @@ let country=document.getElementById("country").value;
 let currency=document.getElementById("currency").value;
 
 let customer=document.getElementById("customer").value;
+let customers = JSON.parse(localStorage.getItem("customers")) || [];
+
+if(customer && !customers.includes(customer)){
+customers.push(customer);
+localStorage.setItem("customers", JSON.stringify(customers));
+}
 let product=document.getElementById("product").value;
 
 let price=Number(document.getElementById("price").value);
@@ -609,6 +617,21 @@ document.getElementById("website").value="";
 document.getElementById("taxid").value="";
 
 alert("Company Profile Reset Successfully!");
+
+} 
+function loadCustomers(){
+
+let customers = JSON.parse(localStorage.getItem("customers")) || [];
+
+let list = document.getElementById("customerList");
+
+list.innerHTML = "";
+
+customers.forEach(function(c){
+
+list.innerHTML += `<option value="${c}">`;
+
+});
 
 }
 </script>

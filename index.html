@@ -267,7 +267,8 @@ accept="image/*">
 <option value="🟢 Paid">🟢 Paid</option>
 <option value="🟡 Pending">🟡 Pending</option>
 <option value="🔴 Unpaid">🔴 Unpaid</option>
-</select>  
+</select>
+<input id="dueDate" type="date"> 
 <button onclick="generateInvoice()">
 Generate Invoice
 </button>
@@ -396,7 +397,8 @@ let price=Number(document.getElementById("price").value);
 let qty=Number(document.getElementById("qty").value);
 let tax=Number(document.getElementById("tax").value);
 let discount=Number(document.getElementById("discount").value);
-let status=document.getElementById("status").value;  
+let status=document.getElementById("status").value;
+let dueDate=document.getElementById("dueDate").value; 
 if(company=="" || customer=="" || product=="" || price<=0 || qty<=0){
 
 alert("Please fill all fields");
@@ -450,6 +452,7 @@ ${taxid ? `<p><b>NTN / Tax ID:</b> ${taxid}</p>` : ""}
 <p><b>Invoice No:</b> ${invoiceNo}</p>
 
 <p><b>Date:</b> ${date}</p>
+<p><b>Due Date:</b> ${dueDate}</p>
 <p><b>Time:</b> ${time}</p>
 <hr>
 

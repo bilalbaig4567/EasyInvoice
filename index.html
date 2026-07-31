@@ -146,6 +146,10 @@ display:none !important;
 h3{
 display:none !important;
 }
+  #recentProducts,
+#recentProducts + h3{
+display:none !important;
+}
 </style>
 
 </head>
@@ -292,7 +296,9 @@ Generate Invoice
 <h3>🕒 Recent Customers</h3>
 
 <div id="recentCustomers"></div>
+<h3>📦 Recent Products</h3>
 
+<div id="recentProducts"></div>
 <button id="historyBtn" onclick="showHistory()" style="background:#f59e0b;">
 📄 Invoice History
 </button>
@@ -364,7 +370,7 @@ document.getElementById("personalPage").style.display="none";
 loadCustomers();
 }
 showRecentCustomers();
-
+showRecentProducts();
 function showPersonal(){
 
 document.getElementById("homePage").style.display="none";
@@ -406,7 +412,12 @@ customers.push(customer);
 localStorage.setItem("customers", JSON.stringify(customers));
 }
 let product=document.getElementById("product").value;
+let products = JSON.parse(localStorage.getItem("products")) || [];
 
+if(product && !products.includes(product)){
+products.push(product);
+localStorage.setItem("products", JSON.stringify(products));
+}
 let price=Number(document.getElementById("price").value);
 let qty=Number(document.getElementById("qty").value);
 let tax=Number(document.getElementById("tax").value);
@@ -654,6 +665,21 @@ document.getElementById("recentCustomers").innerHTML = html;
 
 }
 }
+ function showRecentProducts(){
+
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+let html = "";
+
+products.slice().reverse().forEach(function(p){
+
+html += `<button onclick="document.getElementById('product').value='${p}'" style="width:auto;margin:5px;padding:8px 12px;">${p}</button>`;
+
+});
+
+document.getElementById("recentProducts").innerHTML = html;
+
+} 
 </script>
 </body>
 </html>

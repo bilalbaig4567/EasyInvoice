@@ -691,6 +691,25 @@ html += `<button onclick="document.getElementById('product').value='${p}'" style
 
 document.getElementById("recentProducts").innerHTML = html;
 
+}
+ function signUp(){
+
+let email = document.getElementById("loginEmail").value;
+let password = document.getElementById("loginPassword").value;
+let confirm = document.getElementById("confirmPassword").value;
+
+if(email=="" || password==""){
+alert("Please fill all fields");
+return;
+}
+
+if(password!==confirm){
+alert("Passwords do not match");
+return;
+}
+
+alert("Sign Up UI Ready! Firebase will be added in Version 8 Part 3.");
+
 } 
 </script>
 </body>
@@ -701,12 +720,14 @@ document.getElementById("recentProducts").innerHTML = html;
 <input id="loginEmail" type="email" placeholder="Email">
 
 <input id="loginPassword" type="password" placeholder="Password">
-
+<input id="confirmPassword" type="password" placeholder="Confirm Password">
 <button onclick="alert('Version 8 Part 2')">
 🔐 Login
 </button>
 
-<button onclick="alert('Version 8 Part 2')" style="background:#16a34a;">
+<button onclick="signUp()" style="background:#16a34a;">
+📝 Sign Up
+</button>
 📝 Sign Up
 </button>
 

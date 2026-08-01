@@ -710,7 +710,20 @@ return;
 
 alert("Sign Up UI Ready! Firebase will be added in Version 8 Part 3.");
 
-} 
+}
+function loginUser(){
+
+let email = document.getElementById("loginEmail").value;
+let password = document.getElementById("loginPassword").value;
+
+if(email=="" || password==""){
+alert("Please enter email and password");
+return;
+}
+
+alert("Login UI Ready! Firebase Login will be added in Version 8 Part 3.");
+
+}  
 </script>
 </body>
  <div id="loginPage" style="display:none;max-width:450px;margin:20px auto;background:white;padding:20px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.2);">
@@ -721,10 +734,9 @@ alert("Sign Up UI Ready! Firebase will be added in Version 8 Part 3.");
 
 <input id="loginPassword" type="password" placeholder="Password">
 <input id="confirmPassword" type="password" placeholder="Confirm Password">
-<button onclick="alert('Version 8 Part 2')">
+<button onclick="loginUser()">
 🔐 Login
 </button>
-
 <button onclick="signUp()" style="background:#16a34a;">
 📝 Sign Up
 </button>

@@ -2,7 +2,8 @@ import {
   auth,
   provider,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signInWithPopup
 } from "./firebase.js";
 
 window.signUp = async function () {
@@ -29,6 +30,14 @@ window.signUp = async function () {
 };
 
 window.loginUser = async function () {
+window.googleLogin = async function () {
+  try {
+    await signInWithPopup(auth, provider);
+    alert("✅ Google Login Successful!");
+  } catch (error) {
+    alert(error.message);
+  }
+}; 
   let email = document.getElementById("loginEmail").value;
   let password = document.getElementById("loginPassword").value;
 

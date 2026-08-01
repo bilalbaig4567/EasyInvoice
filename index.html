@@ -587,110 +587,7 @@ document.getElementById("history").innerHTML=
 
 
 
-function generatePersonalInvoice(){
-
-let name=document.getElementById("pname").value;
-let customer=document.getElementById("pcustomer").value;
-let product=document.getElementById("pproduct").value;
-
-let price=Number(document.getElementById("pprice").value);
-let qty=Number(document.getElementById("pqty").value);
-
-
-if(name=="" || customer=="" || product=="" || price<=0 || qty<=0){
-
-alert("Please fill all fields");
-return;
-
-}
-
-
-let total=price*qty;
-
-
-document.getElementById("personalResult").innerHTML=`
-
-<div class="invoice">
-
-<h3>👤 Personal Invoice</h3>
-
-<p><b>Name:</b> ${name}</p>
-
-<p><b>Customer:</b> ${customer}</p>
-
-<p><b>Product:</b> ${product}</p>
-
-<p><b>Total:</b> ${total}</p>
-
-
-</div>
-
-`;
-
-}
-
-function resetCompanyProfile(){
-
-localStorage.removeItem("companyName");
-localStorage.removeItem("companyAddress");
-localStorage.removeItem("companyPhone");
-localStorage.removeItem("companyEmail");
-localStorage.removeItem("companyWebsite");
-localStorage.removeItem("companyTaxId");
-
-document.getElementById("company").value="";
-document.getElementById("address").value="";
-document.getElementById("phone").value="";
-document.getElementById("email").value="";
-document.getElementById("website").value="";
-document.getElementById("taxid").value="";
-
-alert("Company Profile Reset Successfully!");
-
-} 
-function loadCustomers(){
-
-let customers = JSON.parse(localStorage.getItem("customers")) || [];
-
-let list = document.getElementById("customerList");
-
-list.innerHTML = "";
-
-customers.forEach(function(c){
-
-list.innerHTML += `<option value="${c}">`;
-
-});
-function showRecentCustomers(){
-
-let customers = JSON.parse(localStorage.getItem("customers")) || [];
-
-let html = "";
-
-customers.slice().reverse().forEach(function(c){
-
-html += `<button onclick="document.getElementById('customer').value='${c}'" style="width:auto;margin:5px;padding:8px 12px;">${c}</button>`;
-
-});
-
-document.getElementById("recentCustomers").innerHTML = html;
-
-}
-}
- function showRecentProducts(){
-
-let products = JSON.parse(localStorage.getItem("products")) || [];
-
-let html = "";
-
-products.slice().reverse().forEach(function(p){
-
-html += `<button onclick="document.getElementById('product').value='${p}'" style="width:auto;margin:5px;padding:8px 12px;">${p}</button>`;
-
-});
-
-document.getElementById("recentProducts").innerHTML = html;
-
+ 
 }
  function signUp(){
 
@@ -753,6 +650,6 @@ alert("Login UI Ready! Firebase Login will be added in Version 8 Part 3.");
 <button onclick="goHome()" style="background:#6b7280;">
 ⬅ Back
 </button>
-
+<script type="module" src="auth.js"></script>
 </div> 
 </html>

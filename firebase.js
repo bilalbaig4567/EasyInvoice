@@ -1,5 +1,12 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-
+import {
+  getAuth,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 const firebaseConfig = {
   apiKey: "AIzaSyDPB5hJ2wkSm0uRdHnuP0dZ-u_Eq7UYIoQ",
   authDomain: "easyinvoice-pro.firebaseapp.com",
@@ -11,5 +18,14 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
-export { app };
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+export {
+  app,
+  auth,
+  provider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut
+};

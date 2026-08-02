@@ -192,3 +192,55 @@ activity.innerHTML=`
 }
 
 document.addEventListener("DOMContentLoaded",loadDashboard);
+// =======================================
+// Version 12 - Live Invoice Preview
+// =======================================
+
+const invoiceBtn = document.getElementById("createInvoiceBtn");
+
+if(invoiceBtn){
+
+invoiceBtn.addEventListener("click",()=>{
+
+const customer=document.getElementById("invoiceCustomer").value;
+const email=document.getElementById("invoiceEmail").value;
+const product=document.getElementById("invoiceProduct").value;
+const price=Number(document.getElementById("invoicePrice").value);
+const qty=Number(document.getElementById("invoiceQty").value);
+const notes=document.getElementById("invoiceNotes").value;
+
+if(!customer || !product || price<=0 || qty<=0){
+
+alert("Please fill all required fields.");
+
+return;
+
+}
+
+const total=price*qty;
+
+document.getElementById("invoicePreview").innerHTML=`
+
+<h2>Invoice Preview</h2>
+
+<hr><br>
+
+<p><b>Customer:</b> ${customer}</p>
+
+<p><b>Email:</b> ${email || "-"}</p>
+
+<p><b>Product:</b> ${product}</p>
+
+<p><b>Price:</b> $${price.toFixed(2)}</p>
+
+<p><b>Quantity:</b> ${qty}</p>
+
+<h3>Total: $${total.toFixed(2)}</h3>
+
+<p><b>Notes:</b> ${notes || "No Notes"}</p>
+
+`;
+
+});
+
+}

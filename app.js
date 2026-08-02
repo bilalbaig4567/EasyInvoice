@@ -160,3 +160,35 @@ overlay.style.display="none";
 });
 
 }
+// =======================================
+// Dashboard Demo Data
+// =======================================
+
+function loadDashboard(){
+
+document.getElementById("totalInvoices").textContent="12";
+
+document.getElementById("totalCustomers").textContent="8";
+
+document.getElementById("totalProducts").textContent="25";
+
+document.getElementById("totalRevenue").textContent="$2,450";
+
+const activity=document.getElementById("recentActivity");
+
+if(activity){
+
+activity.innerHTML=`
+
+<p>✅ Invoice INV-001 Created</p>
+<p>👤 Customer Ali Added</p>
+<p>📦 Product Laptop Added</p>
+<p>💰 Payment Received</p>
+
+`;
+
+}
+
+}
+
+document.addEventListener("DOMContentLoaded",loadDashboard);

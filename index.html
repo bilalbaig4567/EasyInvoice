@@ -1,655 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EasyInvoice Pro</title>
+<title>EasyInvoice Pro Max</title>
 
-<style>
+<link rel="stylesheet" href="style.css">
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-body{
-background:#eef3ff;
-}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-.header{
-background:#2563eb;
-color:white;
-padding:20px;
-text-align:center;
-font-size:30px;
-font-weight:bold;
-}
-
-.container{
-max-width:450px;
-margin:30px auto;
-background:white;
-padding:25px;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,.2);
-}
-
-h2{
-margin-bottom:20px;
-}
-
-input,select{
-width:100%;
-padding:14px;
-margin:10px 0;
-font-size:16px;
-border:1px solid #ccc;
-border-radius:8px;
-}
-
-button{
-width:100%;
-padding:15px;
-margin-top:15px;
-font-size:18px;
-background:#2563eb;
-color:white;
-border:none;
-border-radius:8px;
-cursor:pointer;
-}
-
-button:hover{
-opacity:.9;
-}
-
-.invoice{
-margin-top:25px;
-border:2px solid #2563eb;
-padding:20px;
-border-radius:10px;
-background:#f8fbff;
-.invoice{
-border:2px solid black;
-}
-
-#businessPage h2,
-#history,
-#historyBtn,
-#clearHistoryBtn{
-display:none !important;
-}
-
-}
-}
-
-.invoice h3{
-color:#2563eb;
-}
-
-.total{
-font-size:24px;
-font-weight:bold;
-color:green;
-margin-top:15px;
-}
-
-@media print {
-
-body{
-#businessPage input,
-#businessPage select,
-#businessPage button,
-#businessPage label,
-#history{
-display:none !important;
-}
-
-#result{
-display:block !important;
-}
-
-.invoice{
-page-break-inside:avoid;
-break-inside:avoid;
-} 
-background:white;
-}
-
-.header,
-button,
-#history{
-display:none;
-}
-
-.container{
-box-shadow:none;
-margin:0;
-max-width:100%;
-}
-
-.invoice{
-border:2px solid black;
-}
-#businessPage h2,
-#businessPage > button:first-child{
-display:none !important;
-}
-}
-#businessPage textarea{
-display:none !important;
-}
-#recentCustomers,
-h3{
-display:none !important;
-}
-  #recentProducts,
-#recentProducts + h3{
-display:none !important;
-}
-</style>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
 <body>
 
+<div id="app">
 
-<div class="header">
-🚀 EasyInvoice Pro
+<header class="topbar">
+
+<div class="logo">
+
+<i class="fa-solid fa-file-invoice-dollar"></i>
+
+<span>EasyInvoice Pro Max</span>
+
 </div>
-<div id="authBar" style="text-align:right;padding:10px 20px;">
-<button onclick="showLogin()" style="width:auto;padding:10px 18px;">
-👤 Login / Sign Up
-</button>
-</div>
 
-<div class="container">
+<div class="top-actions">
 
-
-<!-- HOME PAGE -->
-
-<div id="homePage">
-
-<h2>Choose Invoice Type</h2>
-
-<button onclick="showBusiness()">
-🏢 Business Invoice
+<button id="themeBtn">
+<i class="fa-solid fa-moon"></i>
 </button>
 
-<button onclick="showPersonal()" style="background:#16a34a;">
-👤 Personal Invoice
+<button id="profileBtn">
+<i class="fa-solid fa-user"></i>
 </button>
 
 </div>
 
+</header>
 
+<div class="layout">
 
-<!-- BUSINESS PAGE -->
+<aside class="sidebar">
 
-<div id="businessPage" style="display:none;">
+<h2>Dashboard</h2>
 
-<h2>Create Business Invoice</h2>
+<ul>
 
+<li id="navDashboard">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</li>
 
-<button onclick="goHome()" style="background:#6b7280;">
-🏠 Home
-</button>
+<li id="navInvoices">
+<i class="fa-solid fa-file-invoice"></i>
+Invoices
+</li>
 
+<li id="navCustomers">
+<i class="fa-solid fa-users"></i>
+Customers
+</li>
 
-<input id="company" placeholder="Company Name">
-<input id="address" placeholder="Company Address">
-<input id="phone" placeholder="Company Phone Number">
-<input id="email" type="email" placeholder="Company Email">
-<input id="website" placeholder="Company Website"> 
-<input id="taxid" placeholder="NTN / Tax ID (Optional)">
-<textarea id="notes" placeholder="Customer Notes (Optional)" style="width:100%;padding:14px;margin:10px 0;font-size:16px;border:1px solid #ccc;border-radius:8px;height:90px;"></textarea> 
-<label><b>Company Logo (Optional)</b></label>
+<li id="navProducts">
+<i class="fa-solid fa-box"></i>
+Products
+</li>
 
-<input
-type="file"
-id="logo"
-accept="image/*">
+<li id="navReports">
+<i class="fa-solid fa-chart-column"></i>
+Reports
+</li>
 
-<label><b>Business Type</b></label>
+<li id="navSettings">
+<i class="fa-solid fa-gear"></i>
+Settings
+</li>
 
-<select id="business">
+<li id="navLogout">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</li>
 
-<option>Grocery Shop</option>
-<option>Cafe</option>
-<option>Restaurant</option>
-<option>Clothing Store</option>
-<option>Electronics Shop</option>
-<option>Medical Store</option>
-<option>Pharmacy</option>
-<option>Salon</option>
-<option>Clinic</option>
-<option>Freelancer</option>
-<option>Wholesale</option>
+</ul>
 
-</select>
+</aside>
 
+<main class="content">
 
+<section id="dashboardPage">
 
-<label><b>Country</b></label>
+<h1>Welcome 👋</h1>
 
-<select id="country">
-
-<option value="Pakistan">🇵🇰 Pakistan</option>
-<option value="USA">🇺🇸 USA</option>
-<option value="UK">🇬🇧 United Kingdom</option>
-<option value="UAE">🇦🇪 UAE</option>
-<option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
-<option value="Malaysia">🇲🇾 Malaysia</option>
-<option value="Canada">🇨🇦 Canada</option>
-<option value="Australia">🇦🇺 Australia</option>
-
-</select>
-
-
-
-<label><b>Currency</b></label>
-
-<select id="currency">
-
-<option value="Rs">🇵🇰 PKR (Rs)</option>
-<option value="$">🇺🇸 USD ($)</option>
-<option value="£">🇬🇧 GBP (£)</option>
-<option value="د.إ">🇦🇪 AED (د.إ)</option>
-<option value="﷼">🇸🇦 SAR (﷼)</option>
-<option value="RM">🇲🇾 MYR (RM)</option>
-<option value="C$">🇨🇦 CAD (C$)</option>
-<option value="A$">🇦🇺 AUD (A$)</option>
-
-</select>
-
-
-<input id="customer" list="customerList" placeholder="Customer Name">
-
-<datalist id="customerList"></datalist>
-
-<input id="product" placeholder="Product Name">
-
-<input id="price" type="number" placeholder="Price">
-
-<input id="qty" type="number" placeholder="Quantity">
-<input id="tax" type="number" placeholder="Tax (%)" value="0">
-<input id="discount" type="number" placeholder="Discount (%)" value="0">
-<select id="status">
-<option value="🟢 Paid">🟢 Paid</option>
-<option value="🟡 Pending">🟡 Pending</option>
-<option value="🔴 Unpaid">🔴 Unpaid</option>
-</select>
-<input id="dueDate" type="date"> 
-<button onclick="generateInvoice()">
-Generate Invoice
-</button>
-<button onclick="resetCompanyProfile()" style="background:#dc2626;">
-🗑️ Reset Company Profile
-</button>  
-
-
-<button onclick="window.print()" style="background:#16a34a;">
-🖨️ Print Invoice
-</button>
-
-
-<div id="result"></div>
-<h3>🕒 Recent Customers</h3>
-
-<div id="recentCustomers"></div>
-<h3>📦 Recent Products</h3>
-
-<div id="recentProducts"></div>
-<button id="historyBtn" onclick="showHistory()" style="background:#f59e0b;">
-📄 Invoice History
-</button>
-
-
-<button id="clearHistoryBtn" onclick="clearHistory()" style="background:#dc2626;">
-🗑️ Clear History
-</button>
-
-
-<div id="history"></div>
-
-
-</div>
-
-
-
-
-<!-- PERSONAL PAGE -->
-
-
-<div id="personalPage" style="display:none;">
-
-
-<h2>👤 Personal Invoice</h2>
-
-
-<button onclick="goHome()" style="background:#6b7280;">
-🏠 Home
-</button>
-
-
-<input id="pname" placeholder="Your Name">
-
-<input id="pcustomer" placeholder="Customer Name">
-
-<input id="pproduct" placeholder="Product Name">
-
-<input id="pprice" type="number" placeholder="Price">
-
-<input id="pqty" type="number" placeholder="Quantity">
-
-
-<button>
-Generate Personal Invoice
-</button>
-
-
-<div id="personalResult"></div>
-
-
-</div>
-
-
-</div>
-
-<script>
-
-function showBusiness(){
-document.getElementById("company").value = localStorage.getItem("companyName") || "";
-document.getElementById("address").value = localStorage.getItem("companyAddress") || "";
-document.getElementById("phone").value = localStorage.getItem("companyPhone") || "";
-document.getElementById("email").value = localStorage.getItem("companyEmail") || "";
-document.getElementById("website").value = localStorage.getItem("companyWebsite") || "";
-document.getElementById("taxid").value = localStorage.getItem("companyTaxId") || "";
-document.getElementById("homePage").style.display="none";
-document.getElementById("businessPage").style.display="block";
-document.getElementById("personalPage").style.display="none";
-loadCustomers();
-}
-showRecentCustomers();
-showRecentProducts();
-function showPersonal(){
-
-document.getElementById("homePage").style.display="none";
-document.getElementById("businessPage").style.display="none";
-document.getElementById("personalPage").style.display="block";
-
-}
-
-
-function goHome(){
-
-document.getElementById("homePage").style.display="block";
-document.getElementById("businessPage").style.display="none";
-document.getElementById("personalPage").style.display="none";
-document.getElementById("loginPage").style.display="none";
-}
-function showLogin(){
-
-document.getElementById("homePage").style.display="none";
-document.getElementById("businessPage").style.display="none";
-document.getElementById("personalPage").style.display="none";
-
-document.getElementById("loginPage").style.display="block";
-
-}
-
-
-function generateInvoice(){
-
-let company=document.getElementById("company").value;
-let address=document.getElementById("address").value; 
-let phone=document.getElementById("phone").value;
-let email=document.getElementById("email").value; 
-let website=document.getElementById("website").vvaluelet;
-let taxid=document.getElementById("taxid").value;
-let notes=document.getElementById("notes").value;
-let logo = document.getElementById("logo").files[0];
-let business=document.getElementById("business").value;
-let country=document.getElementById("country").value;
-let currency=document.getElementById("currency").value;
-
-let customer=document.getElementById("customer").value;
-let customers = JSON.parse(localStorage.getItem("customers")) || [];
-
-if(customer && !customers.includes(customer)){
-customers.push(customer);
-localStorage.setItem("customers", JSON.stringify(customers));
-}
-let product=document.getElementById("product").value;
-let products = JSON.parse(localStorage.getItem("products")) || [];
-
-if(product && !products.includes(product)){
-products.push(product);
-localStorage.setItem("products", JSON.stringify(products));
-}
-let price=Number(document.getElementById("price").value);
-let qty=Number(document.getElementById("qty").value);
-let tax=Number(document.getElementById("tax").value);
-let discount=Number(document.getElementById("discount").value);
-let status=document.getElementById("status").value;
-let dueDate=document.getElementById("dueDate").value; 
-if(company=="" || customer=="" || product=="" || price<=0 || qty<=0){
-
-alert("Please fill all fields");
-return;
-
-}
-
-
-let total=price*qty;
-let taxAmount = (total * tax) / 100;
-let discountAmount = (total * discount) / 100; 
-let grandTotal = total + taxAmount - discountAmount;
-let invoiceCounter = Number(localStorage.getItem("invoiceCounter")) || 1;
-
-let invoiceNo = "INV-2026-" + String(invoiceCounter).padStart(6,"0");
-
-localStorage.setItem("invoiceCounter", invoiceCounter + 1);
-
-let now = new Date();
-
-let date = now.toLocaleDateString("en-GB", {
-day: "2-digit",
-month: "short",
-year: "numeric"
-});
-
-let time = now.toLocaleTimeString("en-US", {
-hour: "2-digit",
-minute: "2-digit"
-});
-
-
-let invoice=`
-
-<div class="invoice">
-
-<h3>🚀 EasyInvoice Pro</h3>
-<div id="logoArea"></div>
-<p><b>Company:</b> ${company}</p>
-${address ? `<p><b>Address:</b> ${address}</p>` : ""}
-${phone ? `<p><b>Phone:</b> ${phone}</p>` : ""}
-${email ? `<p><b>Email:</b> ${email}</p>` : ""}
-${website ? `<p><b>Website:</b> ${website}</p>` : ""}
-${taxid ? `<p><b>NTN / Tax ID:</b> ${taxid}</p>` : ""}
-<p><b>Business:</b> ${business}</p>
-
-<p><b>Country:</b> ${country}</p>
-
-<hr>
-<p style="font-size:18px;font-weight:bold;">${status}</p>
-<p><b>Invoice No:</b> ${invoiceNo}</p>
-
-<p><b>Date:</b> ${date}</p>
-<p><b>Due Date:</b> ${dueDate}</p>
-<p><b>Time:</b> ${time}</p>
-<hr>
-
-<p><b>Customer:</b> ${customer}</p>
-
-<p><b>Product:</b> ${product}</p>
-
-<p><b>Price:</b> ${currency}${price}</p>
-
-<p><b>Quantity:</b> ${qty}</p>
-
-<hr>
-
-<p><b>Subtotal:</b> ${currency}${total}</p>
-
-<p><b>Tax (${tax}%):</b> ${currency}${taxAmount}</p>
-<p><b>Discount (${discount}%):</b> -${currency}${discountAmount}</p>
-<hr>
-
-<div class="total">
-Grand Total: ${currency}${grandTotal}
-</div>
-<hr>
-
-${notes ? `<p><b>Notes:</b> ${notes}</p>` : ""}
-
-<br>
-
-<p style="text-align:center;color:#16a34a;font-weight:bold;">
-🙏 Thank you for your business!
+<p>
+Professional Invoice Management System
 </p>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Total Invoices</h3>
+
+<h2 id="totalInvoices">0</h2>
+
 </div>
 
-`;
+<div class="card">
 
+<h3>Total Customers</h3>
 
-document.getElementById("result").innerHTML=invoice;
-localStorage.setItem("companyName", company);
-localStorage.setItem("companyAddress", address);
-localStorage.setItem("companyPhone", phone);
-localStorage.setItem("companyEmail", email);
-localStorage.setItem("companyWebsite", website);
-localStorage.setItem("companyTaxId", taxid); 
-if (logo) {
+<h2 id="totalCustomers">0</h2>
 
-const url = URL.createObjectURL(logo);
+</div>
 
-document.getElementById("logoArea").innerHTML =
-`<img src="${url}" style="width:80px;height:80px;border-radius:10px;margin-bottom:10px;">`;
+<div class="card">
 
-}
+<h3>Total Products</h3>
 
-// Save History
+<h2 id="totalProducts">0</h2>
 
-let oldHistory=localStorage.getItem("invoiceHistory") || "";
+</div>
 
-localStorage.setItem(
-"invoiceHistory",
-invoice + "<hr>" + oldHistory
-);
+<div class="card">
 
+<h3>Total Revenue</h3>
 
-}
+<h2 id="totalRevenue">$0</h2>
 
+</div>
 
+</div>
 
-function showHistory(){
+</section>
 
-let history=localStorage.getItem("invoiceHistory");
+</main>
 
+</div>
 
-if(history==null){
+</div>
 
-document.getElementById("history").innerHTML=
-"<p>No invoices found.</p>";
+<script type="module" src="firebase.js"></script>
 
-}else{
+<script type="module" src="auth.js"></script>
 
-document.getElementById("history").innerHTML=history;
+<script src="app.js"></script>
 
-}
-
-}
-
-
-
-function clearHistory(){
-
-localStorage.removeItem("invoiceHistory");
-
-document.getElementById("history").innerHTML=
-"<p>History cleared.</p>";
-
-}
-
-
-
- 
-}
- function signUp(){
-
-let email = document.getElementById("loginEmail").value;
-let password = document.getElementById("loginPassword").value;
-let confirm = document.getElementById("confirmPassword").value;
-
-if(email=="" || password==""){
-alert("Please fill all fields");
-return;
-}
-
-if(password!==confirm){
-alert("Passwords do not match");
-return;
-}
-
-alert("Sign Up UI Ready! Firebase will be added in Version 8 Part 3.");
-
-}
-function loginUser(){
-
-let email = document.getElementById("loginEmail").value;
-let password = document.getElementById("loginPassword").value;
-
-if(email=="" || password==""){
-alert("Please enter email and password");
-return;
-}
-
-alert("Login UI Ready! Firebase Login will be added in Version 8 Part 3.");
-
-}
-<div id="loginPage" style="display:none;max-width:450px;margin:20px auto;background:white;padding:20px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.2);">  
-</script>
 </body>
 
-<h2>Welcome Back 👋</h2>
-
-<input id="loginEmail" type="email" placeholder="Email">
-
-<input id="loginPassword" type="password" placeholder="Password">
-<input id="confirmPassword" type="password" placeholder="Confirm Password">
-<button onclick="loginUser()">
-🔐 Login
-</button>
-<button onclick="signUp()" style="background:#16a34a;">
-📝 Sign Up
-</button>
-
-
-<button onclick="googleLogin()" style="background:#ffffff;color:#000;border:1px solid #ccc;">
-🔵 Continue with Google
-</button>
-
-<button style="background:#1877F2;">
-📘 Continue with Facebook
-</button>
-
-<button onclick="goHome()" style="background:#6b7280;">
-⬅ Back
-</button>
-<script type="module" src="auth.js"></script>
-</div> 
 </html>

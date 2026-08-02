@@ -995,3 +995,51 @@ color:#6b7280;
 #quickProduct{
 margin-bottom:12px;
 }
+
+/* ==========================================
+   Version 12 - Invoice Module
+========================================== */
+
+.invoice-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:15px;
+
+margin-top:15px;
+
+}
+
+#invoiceNotes{
+
+min-height:120px;
+
+resize:vertical;
+
+}
+
+#invoicePreview{
+
+padding:20px;
+
+border:2px dashed #d1d5db;
+
+border-radius:12px;
+
+margin-top:15px;
+
+background:#fafafa;
+
+}
+
+@media(max-width:768px){
+
+.invoice-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}

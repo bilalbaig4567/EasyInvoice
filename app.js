@@ -72,3 +72,50 @@ item.classList.add("active");
 }
 
 console.log("✅ EasyInvoice Pro Max Loaded");
+// =======================================
+// Professional Navigation
+// =======================================
+
+const pages = {
+
+navDashboard: "dashboardPage",
+
+navInvoices: "invoicesPage",
+
+navCustomers: "customersPage",
+
+navProducts: "productsPage",
+
+navReports: "reportsPage",
+
+navSettings: "settingsPage"
+
+};
+
+Object.keys(pages).forEach(navId=>{
+
+const nav=document.getElementById(navId);
+
+if(nav){
+
+nav.addEventListener("click",()=>{
+
+Object.values(pages).forEach(page=>{
+
+const el=document.getElementById(page);
+
+if(el){
+
+el.style.display="none";
+
+}
+
+});
+
+document.getElementById(pages[navId]).style.display="block";
+
+});
+
+}
+
+});

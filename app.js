@@ -216,7 +216,13 @@ alert("Please fill all required fields.");
 return;
 
 }
+const now = new Date();
 
+const invoiceDate = now.toLocaleDateString();
+
+const invoiceTime = now.toLocaleTimeString();
+
+const invoiceNo = "INV-" + Date.now();
 const total=price*qty;
 
 document.getElementById("invoicePreview").innerHTML=`

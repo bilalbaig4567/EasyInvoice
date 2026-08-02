@@ -1,1 +1,625 @@
+/* ===================================================
+   EasyInvoice Pro Max
+   Version 9 - CSS Part 1
+=================================================== */
 
+:root{
+
+--primary:#2563eb;
+--primary-dark:#1d4ed8;
+--success:#16a34a;
+--danger:#dc2626;
+--warning:#f59e0b;
+
+--bg:#f3f6fc;
+--card:#ffffff;
+--text:#1f2937;
+--border:#dbe4f0;
+
+--radius:18px;
+--shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background:var(--bg);
+
+color:var(--text);
+
+}
+
+button{
+
+font-family:'Poppins',sans-serif;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+button:hover{
+
+transform:translateY(-2px);
+
+}
+
+#app{
+
+min-height:100vh;
+
+}
+
+/* ==========================
+   TOP BAR
+========================== */
+
+.topbar{
+
+height:70px;
+
+background:white;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 25px;
+
+box-shadow:var(--shadow);
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+}
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+font-size:24px;
+
+font-weight:700;
+
+color:var(--primary);
+
+}
+
+.logo i{
+
+font-size:28px;
+
+}
+
+.top-actions{
+
+display:flex;
+
+gap:12px;
+
+}
+
+.top-actions button{
+
+width:46px;
+
+height:46px;
+
+border:none;
+
+border-radius:50%;
+
+background:#eef4ff;
+
+color:var(--primary);
+
+font-size:18px;
+
+}
+
+/* ==========================
+   LAYOUT
+========================== */
+
+.layout{
+
+display:flex;
+
+min-height:calc(100vh - 70px);
+
+}
+
+/* ==========================
+   SIDEBAR
+========================== */
+
+.sidebar{
+
+width:260px;
+
+background:#0f172a;
+
+color:white;
+
+padding:30px 20px;
+
+}
+
+.sidebar h2{
+
+margin-bottom:25px;
+
+font-size:22px;
+
+}
+
+.sidebar ul{
+
+list-style:none;
+
+}
+
+.sidebar li{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+padding:14px 16px;
+
+border-radius:12px;
+
+margin-bottom:8px;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.sidebar li:hover{
+
+background:#1e293b;
+
+}
+
+.sidebar i{
+
+width:22px;
+
+text-align:center;
+
+}
+/* ==========================
+   MAIN CONTENT
+========================== */
+
+.content{
+
+flex:1;
+
+padding:35px;
+
+overflow:auto;
+
+}
+
+.content h1{
+
+font-size:32px;
+
+margin-bottom:8px;
+
+}
+
+.content p{
+
+color:#64748b;
+
+margin-bottom:30px;
+
+}
+
+/* ==========================
+   DASHBOARD CARDS
+========================== */
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+
+gap:22px;
+
+}
+
+.card{
+
+background:var(--card);
+
+border-radius:var(--radius);
+
+padding:25px;
+
+box-shadow:var(--shadow);
+
+transition:.25s;
+
+border:1px solid var(--border);
+
+}
+
+.card:hover{
+
+transform:translateY(-6px);
+
+}
+
+.card h3{
+
+font-size:16px;
+
+color:#64748b;
+
+margin-bottom:15px;
+
+font-weight:500;
+
+}
+
+.card h2{
+
+font-size:34px;
+
+color:var(--primary);
+
+font-weight:700;
+
+}
+
+/* ==========================
+   FORM DESIGN
+========================== */
+
+input,
+select,
+textarea{
+
+width:100%;
+
+padding:14px 16px;
+
+margin-top:12px;
+
+border-radius:12px;
+
+border:1px solid var(--border);
+
+outline:none;
+
+font-size:15px;
+
+font-family:'Poppins',sans-serif;
+
+background:white;
+
+transition:.25s;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+border-color:var(--primary);
+
+box-shadow:0 0 0 4px rgba(37,99,235,.12);
+
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+
+.btn{
+
+background:var(--primary);
+
+color:white;
+
+border:none;
+
+padding:14px 22px;
+
+border-radius:12px;
+
+font-size:15px;
+
+font-weight:600;
+
+}
+
+.btn:hover{
+
+background:var(--primary-dark);
+
+}
+
+.btn-success{
+
+background:var(--success);
+
+}
+
+.btn-danger{
+
+background:var(--danger);
+
+}
+
+.btn-warning{
+
+background:var(--warning);
+
+}
+
+/* ==========================
+   SECTION BOX
+========================== */
+
+.section{
+
+background:white;
+
+padding:25px;
+
+margin-top:30px;
+
+border-radius:18px;
+
+box-shadow:var(--shadow);
+
+border:1px solid var(--border);
+
+}
+/* ==========================
+   RESPONSIVE DESIGN
+========================== */
+
+@media (max-width:900px){
+
+.layout{
+
+flex-direction:column;
+
+}
+
+.sidebar{
+
+width:100%;
+
+padding:15px;
+
+}
+
+.sidebar ul{
+
+display:flex;
+
+overflow-x:auto;
+
+gap:10px;
+
+}
+
+.sidebar li{
+
+white-space:nowrap;
+
+margin-bottom:0;
+
+}
+
+.content{
+
+padding:20px;
+
+}
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+/* ==========================
+   TABLE DESIGN
+========================== */
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+margin-top:20px;
+
+background:white;
+
+border-radius:12px;
+
+overflow:hidden;
+
+}
+
+th{
+
+background:var(--primary);
+
+color:white;
+
+padding:14px;
+
+text-align:left;
+
+}
+
+td{
+
+padding:14px;
+
+border-bottom:1px solid #eee;
+
+}
+
+tr:hover{
+
+background:#f8fbff;
+
+}
+
+/* ==========================
+   ANIMATIONS
+========================== */
+
+.card,
+.section,
+button{
+
+animation:fadeUp .45s ease;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(15px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+
+.dark{
+
+--bg:#0f172a;
+
+--card:#1e293b;
+
+--text:#f8fafc;
+
+--border:#334155;
+
+}
+
+.dark .topbar{
+
+background:#1e293b;
+
+color:white;
+
+}
+
+.dark .sidebar{
+
+background:#020617;
+
+}
+
+.dark input,
+.dark select,
+.dark textarea{
+
+background:#1e293b;
+
+color:white;
+
+border:1px solid #334155;
+
+}
+
+.dark table{
+
+background:#1e293b;
+
+color:white;
+
+}
+
+/* ==========================
+   PRINT
+========================== */
+
+@media print{
+
+.topbar,
+.sidebar,
+button{
+
+display:none !important;
+
+}
+
+.content{
+
+padding:0;
+
+}
+
+body{
+
+background:white;
+
+}
+
+.section,
+.card{
+
+box-shadow:none;
+
+border:1px solid #000;
+
+}
+
+}

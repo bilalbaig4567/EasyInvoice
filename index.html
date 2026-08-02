@@ -181,7 +181,50 @@ Professional Invoice Management System
 
 <!-- Invoices -->
 <section id="invoicesPage" style="display:none;">
-<h1>Invoices</h1>
+<h1>Create Invoice</h1>
+
+<p class="subtitle">
+Generate professional invoices in seconds.
+</p>
+
+<div class="panel">
+
+<input id="invoiceCustomer" type="text" placeholder="Customer Name">
+
+<input id="invoiceEmail" type="email" placeholder="Customer Email">
+
+<input id="invoiceProduct" type="text" placeholder="Product / Service">
+
+<div class="invoice-grid">
+
+<input id="invoicePrice" type="number" placeholder="Price">
+
+<input id="invoiceQty" type="number" placeholder="Quantity">
+
+</div>
+
+<textarea id="invoiceNotes"
+placeholder="Notes (Optional)"></textarea>
+
+<button id="createInvoiceBtn">
+
+📄 Generate Invoice
+
+</button>
+
+</div>
+
+<div class="panel" style="margin-top:25px;">
+
+<h2>Invoice Preview</h2>
+
+<div id="invoicePreview">
+
+<p>No invoice generated yet.</p>
+
+</div>
+
+</div>
 </section>
 
 <!-- Customers -->

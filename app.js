@@ -119,3 +119,44 @@ document.getElementById(pages[navId]).style.display="block";
 }
 
 });
+// =======================================
+// Mobile Sidebar
+// =======================================
+
+const menuToggle = document.getElementById("menuToggle");
+const closeSidebar = document.getElementById("closeSidebar");
+const sidebar = document.querySelector(".sidebar");
+const overlay = document.getElementById("overlay");
+
+if(menuToggle){
+
+menuToggle.addEventListener("click",()=>{
+
+sidebar.classList.add("open");
+overlay.style.display="block";
+
+});
+
+}
+
+if(closeSidebar){
+
+closeSidebar.addEventListener("click",()=>{
+
+sidebar.classList.remove("open");
+overlay.style.display="none";
+
+});
+
+}
+
+if(overlay){
+
+overlay.addEventListener("click",()=>{
+
+sidebar.classList.remove("open");
+overlay.style.display="none";
+
+});
+
+}

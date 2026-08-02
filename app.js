@@ -225,9 +225,18 @@ const invoiceTime = now.toLocaleTimeString();
 const invoiceNo = "INV-" + Date.now();
 const total=price*qty;
 
+
 document.getElementById("invoicePreview").innerHTML=`
 
 <h2>Invoice Preview</h2>
+
+<hr><br>
+
+<p><b>Invoice No:</b> ${invoiceNo}</p>
+
+<p><b>Date:</b> ${invoiceDate}</p>
+
+<p><b>Time:</b> ${invoiceTime}</p>
 
 <hr><br>
 
@@ -241,7 +250,13 @@ document.getElementById("invoicePreview").innerHTML=`
 
 <p><b>Quantity:</b> ${qty}</p>
 
-<h3>Total: $${total.toFixed(2)}</h3>
+<p><b>Subtotal:</b> $${total.toFixed(2)}</p>
+
+<p><b>Tax:</b> ${tax}% (+$${taxAmount.toFixed(2)})</p>
+
+<p><b>Discount:</b> ${discount}% (-$${discountAmount.toFixed(2)})</p>
+
+<h2>Grand Total: $${grandTotal.toFixed(2)}</h2>
 
 <p><b>Notes:</b> ${notes || "No Notes"}</p>
 

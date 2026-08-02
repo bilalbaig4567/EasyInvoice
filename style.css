@@ -623,3 +623,12 @@ border:1px solid #000;
 }
 
 }
+.sidebar li.active{
+
+background:var(--primary);
+
+color:white;
+
+font-weight:600;
+
+}
